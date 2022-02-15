@@ -1,0 +1,10 @@
+@import '~@ngx-tc/base/src/assets/scss/base.scss';
+
+:host {
+  --tc-form-description-color: inherit;
+
+  color: var(--tc-form-description-color);
+  display: block;
+  margin: 10px 0 0;
+  margin: var(--tc-base-module-rem) 0 0;
+}

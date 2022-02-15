@@ -1,8 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+
+import { StoreModule } from '@ngrx/store';
+
+import { ROUTES } from './routing/routing.module';
+import { pageDataReducer } from './store/reducers/page-data.reducer';
+import { appSettingsReducer } from './store/reducers/app-settings.reducer';
+import { PagesModule } from './pages/pages.module';
+import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +19,15 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    RouterModule.forRoot(ROUTES, { relativeLinkResolution: 'legacy' }),
+    StoreModule.forRoot({
+      pageData: pageDataReducer,
+      appSettings: appSettingsReducer
+    }),
+    LayoutModule,
+    PagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

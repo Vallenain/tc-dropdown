@@ -1,0 +1,19 @@
+{
+  "name": "@ngx-tc/base",
+  "version": "0.0.11",
+  "author": "type0code",
+  "license": "MIT",
+  "description": "Angular UI components library",
+  "keywords": ["angular", "angular UI", "angular components", "ng", "ngx"],
+  "repository": "https://github.com/ngx-tc/base",
+  "config": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@angular/common": "^13.1.0",
+    "@angular/core": "^13.1.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}

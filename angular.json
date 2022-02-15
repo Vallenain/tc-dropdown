@@ -31,9 +31,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/assets/scss/bootstrap/bootstrap.scss",
+              "src/assets/css/icofont.min.css",
+              "node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css",
+              "src/assets/scss/loader.scss",
+              "src/assets/scss/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -99,9 +106,233 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/assets/scss/bootstrap/bootstrap.scss",
+              "src/assets/css/icofont.min.css",
+              "node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css",
+              "src/assets/scss/loader.scss",
+              "src/assets/scss/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"
+            ]
+          }
+        }
+      }
+    },
+    "@ngx-tc/input": {
+      "projectType": "library",
+      "root": "projects/ngx-tc/input",
+      "sourceRoot": "projects/ngx-tc/input/src",
+      "prefix": "tc",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-tc/input/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-tc/input/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-tc/input/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-tc/input/src/test.ts",
+            "tsConfig": "projects/ngx-tc/input/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-tc/input/karma.conf.js"
+          }
+        }
+      }
+    },
+    "@ngx-tc/base": {
+      "projectType": "library",
+      "root": "projects/ngx-tc/base",
+      "sourceRoot": "projects/ngx-tc/base/src",
+      "prefix": "tc",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-tc/base/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-tc/base/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-tc/base/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-tc/base/src/test.ts",
+            "tsConfig": "projects/ngx-tc/base/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-tc/base/karma.conf.js"
+          }
+        }
+      }
+    },
+    "@ngx-tc/form-label": {
+      "projectType": "library",
+      "root": "projects/ngx-tc/form-label",
+      "sourceRoot": "projects/ngx-tc/form-label/src",
+      "prefix": "tc",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-tc/form-label/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-tc/form-label/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-tc/form-label/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-tc/form-label/src/test.ts",
+            "tsConfig": "projects/ngx-tc/form-label/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-tc/form-label/karma.conf.js"
+          }
+        }
+      }
+    },
+    "@ngx-tc/form-group": {
+      "projectType": "library",
+      "root": "projects/ngx-tc/form-group",
+      "sourceRoot": "projects/ngx-tc/form-group/src",
+      "prefix": "tc",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-tc/form-group/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-tc/form-group/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-tc/form-group/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-tc/form-group/src/test.ts",
+            "tsConfig": "projects/ngx-tc/form-group/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-tc/form-group/karma.conf.js"
+          }
+        }
+      }
+    },
+    "@ngx-tc/form-description": {
+      "projectType": "library",
+      "root": "projects/ngx-tc/form-description",
+      "sourceRoot": "projects/ngx-tc/form-description/src",
+      "prefix": "tc",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-tc/form-description/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-tc/form-description/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-tc/form-description/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-tc/form-description/src/test.ts",
+            "tsConfig": "projects/ngx-tc/form-description/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-tc/form-description/karma.conf.js"
+          }
+        }
+      }
+    },
+    "@ngx-tc/card": {
+      "projectType": "library",
+      "root": "projects/ngx-tc/card",
+      "sourceRoot": "projects/ngx-tc/card/src",
+      "prefix": "tc",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-tc/card/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-tc/card/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-tc/card/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-tc/card/src/test.ts",
+            "tsConfig": "projects/ngx-tc/card/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-tc/card/karma.conf.js"
+          }
+        }
+      }
+    },
+    "@ngx-tc/button": {
+      "projectType": "library",
+      "root": "projects/ngx-tc/button",
+      "sourceRoot": "projects/ngx-tc/button/src",
+      "prefix": "tc",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-tc/button/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-tc/button/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-tc/button/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-tc/button/src/test.ts",
+            "tsConfig": "projects/ngx-tc/button/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-tc/button/karma.conf.js"
           }
         }
       }

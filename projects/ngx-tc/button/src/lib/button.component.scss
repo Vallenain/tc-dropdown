@@ -1,0 +1,225 @@
+@use 'sass:math';
+@import '~@ngx-tc/base/src/assets/scss/base.scss';
+
+$_types: ('primary', 'accent', 'success', 'info', 'warning', 'error');
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+:host {
+  --tc-btn-fs: var(--tc-base-fs);
+  --tc-btn-ff: var(--tc-base-ff);
+  --tc-btn-fw: 700;
+  --tc-btn-module-rem: var(--tc-base-module-rem);
+  --tc-btn-lh: var(--tc-base-lh);
+  --tc-btn-text-transform: none;
+  --tc-btn-shape: var(--tc-base-shape);
+  --tc-btn-shadow: var(--tc-base-shadow);
+  --tc-btn-shadow-hover: var(--tc-base-shadow-hover);
+  --tc-btn-border-width: #{toRem(1)};
+  --tc-btn-border-style: solid;
+  --tc-btn-padding: var(--tc-btn-module-rem) calc(var(--tc-btn-module-rem) * 1.5);
+  --tc-btn-transition: var(--tc-base-animation);
+  --tc-btn-bg: transparent;
+  --tc-btn-color: var(--tc-color-primary);
+
+	align-items: center;
+  background: var(--tc-btn-bg);
+  border: transparent 0 var(--tc-btn-border-style);
+  border-radius: var(--tc-btn-shape);
+  box-shadow: var(--tc-btn-shadow);
+  color: var(--tc-btn-color);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--tc-btn-ff);
+  font-size: var(--tc-btn-fs);
+  font-weight: var(--tc-btn-fw);
+  justify-content: center;
+  line-height: var(--tc-btn-lh);
+  outline: none;
+  padding: var(--tc-btn-padding);
+	position: relative;
+  text-align: center;
+  text-transform: var(--tc-btn-text-transform);
+  touch-action: manipulation;
+  transition:
+		background .2s var(--tc-btn-transition),
+    border .2s var(--tc-btn-transition),
+    box-shadow .2s var(--tc-btn-transition),
+    color .2s var(--tc-btn-transition),
+    opacity .2s var(--tc-btn-transition);
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  will-change: background, border, box-shadow, color, opacity;
+  -webkit-appearance: none;
+
+  &:hover {
+    border-color: transparent;
+    box-shadow: var(--tc-btn-shadow-hover);
+  }
+  .btn-text {
+    margin: 0 calc(var(--tc-btn-module-rem) * .5);
+    min-height: calc(var(--tc-btn-fs) * var(--tc-btn-lh));
+
+    &:empty {
+      margin: 0;
+    }
+  }
+  .btn-line {
+    border-width: var(--tc-btn-border-width);
+    border-style: inherit;
+    border-color: inherit;
+    border-radius: inherit;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+		top: 0;
+    transition: background .2s var(--tc-btn-transition);
+    will-change: background;
+		z-index: 2;
+  }
+  .btn-icon {
+    font-size: 1.3em;
+    margin: 0 calc(var(--tc-btn-module-rem) * .5);
+  }
+  .btn-loader {
+    align-items: center;
+    border-radius: inherit;
+    display: flex;
+    font-size: 150%;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    width: 100%;
+
+    .icon {
+      fill: currentColor;
+      animation: rotation 1s infinite linear;
+    }
+  }
+  &.btn-square {
+    min-width: calc(var(--tc-btn-module-rem) * 4);
+    padding-left: calc(var(--tc-btn-module-rem) * .5);
+    padding-right: calc(var(--tc-btn-module-rem) * .5);
+
+    &.btn-sm {
+      min-width: calc(var(--tc-btn-module-rem) * 3);
+    }
+    &.btn-lg {
+      min-width: calc(var(--tc-btn-module-rem) * 5);
+    }
+  }
+  &.btn-block {
+    display: block;
+    width: 100%;
+  }
+  &.btn-left {
+    justify-content: flex-start;
+    text-align: left;
+  }
+  &.btn-right {
+    justify-content: flex-end;
+    text-align: right;
+  }
+  &.btn-lg {
+    --tc-btn-fs: calc(var(--tc-base-fs) * 1.2);
+    --tc-btn-lh: 1.1904761905;
+    --tc-btn-padding: calc(var(--tc-btn-module-rem) * 1.5) calc(var(--tc-btn-module-rem) * 2.5);
+  }
+  &.btn-sm {
+    --tc-btn-fs: calc(var(--tc-base-fs) * .8);
+    --tc-btn-lh: .8928571429;
+    --tc-btn-padding: var(--tc-btn-module-rem) calc(var(--tc-btn-module-rem) * .5);
+  }
+
+  // colors - (primary, accent, success, info, warning, error)
+  @each $type in $_types {
+    &.btn-#{$type} {
+      --tc-btn-bg: var(--tc-color-#{$type});
+      --tc-btn-color: var(--tc-color-#{$type}-contrast);
+
+      &:hover,
+      .active & {
+        opacity: .8;
+      }
+    }
+  }
+
+  &.btn-outline {
+    background: transparent;
+    border-color: var(--tc-btn-bg);
+    color: var(--tc-btn-bg);
+
+    &:hover,
+    .active & {
+      background: var(--tc-btn-bg);
+      color: var(--tc-btn-color);
+      opacity: 1;
+    }
+  }
+  &.btn-disabled {
+    cursor: not-allowed;
+    opacity: .6;
+    pointer-events: none;
+  }
+  &.btn-load {
+    cursor: not-allowed;
+    pointer-events: none;
+
+    .btn-text,
+    .btn-icon {
+      visibility: hidden;
+    }
+    .btn-loader {
+      visibility: visible;
+    }
+  }
+  &.btn-icon-animation {
+    .btn-icon {
+      align-items: center;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: transform .2s var(--tc-btn-transition);
+      transform: scale(0);
+      will-change: transform;
+    }
+    .btn-text {
+      transition: opacity .2s var(--tc-btn-transition);
+      will-change: opacity;
+    }
+    &:hover,
+    .active & {
+      .btn-icon {
+        transform: scale(1);
+      }
+      .btn-text {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+@-webkit-keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

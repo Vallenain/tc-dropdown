@@ -2,11 +2,61 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "@ngx-tc/base": [
+        "dist/ngx-tc/base/ngx-tc-base",
+        "dist/ngx-tc/base"
+      ],
+      "@ngx-tc/button": [
+        "dist/ngx-tc/button/ngx-tc-button",
+        "dist/ngx-tc/button"
+      ],
+      "@ngx-tc/card": [
+        "dist/ngx-tc/card/ngx-tc-card",
+        "dist/ngx-tc/card"
+      ],
+      "@ngx-tc/form-description": [
+        "dist/ngx-tc/form-description/ngx-tc-form-description",
+        "dist/ngx-tc/form-description"
+      ],
+      "@ngx-tc/form-group": [
+        "dist/ngx-tc/form-group/ngx-tc-form-group",
+        "dist/ngx-tc/form-group"
+      ],
+      "@ngx-tc/form-label": [
+        "dist/ngx-tc/form-label/ngx-tc-form-label",
+        "dist/ngx-tc/form-label"
+      ],
+      "@ngx-tc/input": [
+        "dist/ngx-tc/input/ngx-tc-input",
+        "dist/ngx-tc/input"
+      ],
+      "@ngx-tc/label": [
+        "dist/ngx-tc/label/ngx-tc-label",
+        "dist/ngx-tc/label"
+      ],
+      "@tc/input": [
+        "dist/tc/input/tc-input",
+        "dist/tc/input"
+      ],
+      "@tc/tc-base": [
+        "dist/tc/tc-base/tc-base",
+        "dist/tc/tc-base"
+      ],
+      "@tc/tc-button": [
+        "dist/tc/tc-button/tc-button",
+        "dist/tc/tc-button"
+      ],
+      "@tc/tc-input": [
+        "dist/tc/tc-input/tc-input",
+        "dist/tc/tc-input"
+      ]
+    },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitOverride": true,
+    "strict": false,
+    "noImplicitOverride": false,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
@@ -21,9 +71,12 @@
     "lib": [
       "es2020",
       "dom"
-    ]
+    ],
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {
+    "enableIvy": false,
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
