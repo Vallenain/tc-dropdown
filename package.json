@@ -3,12 +3,17 @@
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "postinstall": "ng build"
   },
   "private": true,
+  "engines": {
+    "node": "14.17.3",
+    "npm": "8.4.1"
+  },
   "dependencies": {
     "@angular/animations": "~13.1.0",
     "@angular/common": "~13.1.0",
@@ -28,7 +33,13 @@
     "@ngx-tc/form-group": "^0.0.3",
     "@ngx-tc/form-label": "^0.0.2",
     "@ngx-tc/form-description": "^0.0.2",
-    "@ngx-tc/card": "^0.0.2"
+    "@ngx-tc/card": "^0.0.2",
+    "@ngx-tc/button": "^0.0.1",
+    "typescript": "~4.5.2",
+    "@angular/cli": "~13.1.3",
+    "@angular/compiler-cli": "~13.1.0",
+    "express": "^4.17.2",
+    "path": "0.12.7"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.1.3",
