@@ -6,6 +6,8 @@
   <!-- Horizontal navbar -->
   <navbar
     [boxed]="appSettings.boxed"
+    [tcBgColor]="appSettings.topbarBg"
+    [tcColor]="appSettings.topbarColor"
     [minHeight]="'4.28571429rem'"
   >
     <button
@@ -26,6 +28,8 @@
   <!-- Vertical navbar -->
   <navbar
     [orientation]="'vertical'"
+    [tcBgColor]="appSettings.sidebarBg"
+    [tcColor]="appSettings.sidebarColor"
     [opened]="appSettings.sidebarOpened"
   >
     <button
@@ -33,7 +37,7 @@
       (click)="toggleSidebar(false)"
     ></button>
 
-    <logo [src]="'assets/img/logo.svg'" [width]="147" [height]="33"></logo>
+    <logo [src]="'assets/img/logo.svg'" [width]="40" [height]="40"></logo>
 
     <app-menu [src]="'assets/data/menu.json'"></app-menu>
 

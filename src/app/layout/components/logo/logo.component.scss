@@ -7,7 +7,7 @@
   position: relative;
 
   .logo-wrap {
-    align-items: center;
+    align-items: flex-end;
     color: inherit;
     display: flex;
     height: 100%;
@@ -22,10 +22,12 @@
       width: auto;
     }
     .logo-text {
+      color: #1FA0E3;
       display: block;
-      font-size: 20px;
+      font-size: 26px;
+      font-weight: 700;
       line-height: 1;
-      margin-left: ($module-rem * 2);
+      margin: 0 0 1px 5px;
     }
   }
 }
