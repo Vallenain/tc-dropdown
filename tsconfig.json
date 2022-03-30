@@ -3,6 +3,10 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
+      "@ngx-tc/alert": [
+        "dist/ngx-tc/alert/ngx-tc-alert",
+        "dist/ngx-tc/alert"
+      ],
       "@ngx-tc/base": [
         "dist/ngx-tc/base/ngx-tc-base",
         "dist/ngx-tc/base"
@@ -35,6 +39,10 @@
         "dist/ngx-tc/label/ngx-tc-label",
         "dist/ngx-tc/label"
       ],
+      "@ngx-tc/rating": [
+        "dist/ngx-tc/rating/ngx-tc-rating",
+        "dist/ngx-tc/rating"
+      ],
       "@tc/input": [
         "dist/tc/input/tc-input",
         "dist/tc/input"
@@ -50,6 +58,10 @@
       "@tc/tc-input": [
         "dist/tc/tc-input/tc-input",
         "dist/tc/tc-input"
+      ],
+      "rating": [
+        "dist/rating/rating",
+        "dist/rating"
       ]
     },
     "baseUrl": "./",

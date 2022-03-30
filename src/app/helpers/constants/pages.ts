@@ -1,12 +1,12 @@
 import { PageInputsComponent } from 'src/app/pages/inputs';
 import { PageCardsComponent } from 'src/app/pages/cards';
 import { PageButtonsComponent } from 'src/app/pages/buttons';
-// import { PageAlertsComponent } from 'src/app/pages/alerts';
+import { PageRatingsComponent } from 'src/app/pages/ratings';
+import { PageAlertsComponent } from 'src/app/pages/alerts';
 // import { PageSelectsComponent } from 'src/app/pages/selects';
 // import { PageTextareasComponent } from 'src/app/pages/textareas';
 // import { PageAutocompletesComponent } from 'src/app/pages/autocompletes';
 // import { PageBadgesComponent } from 'src/app/pages/badges';
-// import { PageRatingsComponent } from 'src/app/pages/ratings';
 // import { PageCheckboxesComponent } from 'src/app/pages/checkboxes';
 // import { PageRadioButtonsComponent } from 'src/app/pages/radio-buttons';
 // import { PageSwitchersComponent } from 'src/app/pages/switchers';
@@ -19,12 +19,12 @@ export const pages = [
   PageInputsComponent,
   PageCardsComponent,
   PageButtonsComponent,
-  // PageAlertsComponent,
+  PageRatingsComponent,
+  PageAlertsComponent,
   // PageSelectsComponent,
   // PageTextareasComponent,
   // PageAutocompletesComponent,
   // PageBadgesComponent,
-  // PageRatingsComponent,
   // PageCheckboxesComponent,
   // PageRadioButtonsComponent,
   // PageSwitchersComponent,

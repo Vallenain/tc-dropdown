@@ -1,0 +1,93 @@
+@use 'sass:math';
+@import '~@ngx-tc/base/src/assets/scss/base.scss';
+
+$_types: ('primary', 'accent', 'success', 'info', 'warning', 'error');
+
+:host {
+  --tc-alert-fs: inherit;
+  --tc-alert-ff: inherit;
+  --tc-alert-fw: inherit;
+  --tc-alert-module-rem: var(--tc-base-module-rem);
+  --tc-alert-lh: inherit;
+  --tc-alert-shape: var(--tc-base-shape);
+  --tc-alert-shadow: var(--tc-base-shadow);
+  --tc-alert-border-width: #{toRem(1)};
+  --tc-alert-margin: 0;
+  --tc-alert-content-padding: calc(var(--tc-alert-module-rem) * 2 - var(--tc-alert-border-width)) var(--tc-alert-module-rem);
+  --tc-alert-transition: var(--tc-base-animation, ease-in-out);
+  --tc-alert-title-fs: 1.25em;
+  --tc-alert-title-fw: 500;
+  --tc-alert-title-margin: 0 0 calc(var(--tc-alert-module-rem) * .5);
+  --tc-alert-bg: rgba(235,235,235,.3);
+  --tc-alert-color: inherit;
+
+	border: var(--tc-alert-border-width) solid transparent;
+  background: var(--tc-alert-bg);
+  color: var(--tc-alert-color);
+	display: flex;
+	border-radius: var(--tc-alert-shape);
+	position: relative;
+	padding: 0 var(--tc-alert-module-rem);
+
+  .content {
+    align-self: center;
+    display: block;
+    flex: 1;
+    padding: var(--tc-alert-content-padding);
+
+    .title {
+      font-size: var(--tc-alert-title-fs);
+      font-weight: var(--tc-alert-title-fw);
+      margin: var(--tc-alert-title-margin);
+    }
+  }
+  .close {
+    align-self: flex-start;
+    color: inherit;
+    cursor: pointer;
+    font-size: 1.25em;
+    line-height: 1;
+    margin: var(--tc-alert-module-rem);
+    opacity: 0;
+    transition: opacity .2s var(--tc-alert-transition);
+
+    svg {
+      fill: currentColor;
+    }
+  }
+  .alert-icon {
+    align-items: center;
+    background: rgba(#fff,.2);
+    display: flex;
+    font-size: 1.43em;
+    line-height: 1;
+    min-height: 100%;
+    padding: var(--tc-alert-module-rem) calc(var(--tc-alert-module-rem) * 1.5);
+  }
+  // colors - (primary, accent, success, info, warning, error)
+  @each $type in $_types {
+    &.alert-#{$type} {
+      --tc-alert-bg: var(--tc-color-#{$type});
+      --tc-alert-color: var(--tc-color-#{$type}-contrast);
+
+      &.outline {
+        --tc-alert-color: var(--tc-color-#{$type});
+      }
+    }
+  }
+  &.outline {
+    background-color: transparent;
+    border-color: currentColor;
+  }
+  &.with-before-icon {
+    padding-left: 0;
+  }
+  &.with-after-icon {
+    padding-right: 0;
+  }
+  &:hover {
+    .close {
+      opacity: 1;
+    }
+  }
+}

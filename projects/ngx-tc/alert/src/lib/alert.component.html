@@ -1,0 +1,15 @@
+<span class="alert-icon" *ngIf="beforeIcon"><i [ngClass]="beforeIcon"></i></span>
+
+<div class="content">
+	<h5 class="title" *ngIf="title">{{ title }}</h5>
+
+	<span class="message"><ng-content></ng-content></span>
+</div>
+
+<button class="no-style close" *ngIf="removable" (click)="removeAlert()">
+  <svg viewBox="0 0 1000 1000" height="18" width="18">
+    <path d="M762.5 200l37.5 37.5-262.5 262.5 262.5 262.5-37.5 37.5-262.5-262.5-262.5 262.5-37.5-37.5 262.5-262.5-262.5-262.5 37.5-37.5 262.5 262.5z"/>
+  </svg>
+</button>
+
+<span class="alert-icon" *ngIf="afterIcon"><i [ngClass]="afterIcon"></i></span>

@@ -14,6 +14,8 @@ import { TcFormGroupModule } from '@ngx-tc/form-group';
 import { TcFormLabelModule } from '@ngx-tc/form-label';
 import { TcFormDescriptionModule } from '@ngx-tc/form-description';
 import { TcButtonModule } from '@ngx-tc/button';
+import { TcRatingModule } from '@ngx-tc/rating';
+import { TcAlertModule } from '@ngx-tc/alert';
 
 @NgModule({
   imports: [
@@ -29,7 +31,9 @@ import { TcButtonModule } from '@ngx-tc/button';
     TcFormLabelModule,
     TcFormDescriptionModule,
     TcCardModule,
-    TcButtonModule
+    TcButtonModule,
+    TcRatingModule,
+    TcAlertModule
   ],
   declarations: [
     BasePageComponent,
