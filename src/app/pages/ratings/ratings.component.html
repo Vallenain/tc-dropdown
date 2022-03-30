@@ -97,28 +97,28 @@
   </div>
 </div>
 
-<!--<tc-card [title]="'Forms'" class="mb-0">-->
-<!--	<div class="row">-->
-<!--		<div class="col-12 col-md-6 mb-4 mb-md-0">-->
-<!--			<form [formGroup]="reactiveForm" novalidate>-->
-<!--				<tc-form-group>-->
-<!--					<tc-form-label>Reactive form</tc-form-label>-->
+<tc-card [title]="'Forms'" class="mb-0">
+	<div class="row">
+		<div class="col-12 col-md-6 mb-4 mb-md-0">
+			<form [formGroup]="reactiveForm" novalidate>
+				<tc-form-group>
+					<tc-form-label>Reactive form</tc-form-label>
 
-<!--					<tc-rating formControlName="ratingField"></tc-rating>-->
-<!--				</tc-form-group>-->
-<!--			</form>-->
+					<tc-rating formControlName="ratingField"></tc-rating>
+				</tc-form-group>
+			</form>
 
-<!--			<tc-input [readonly]="true" [(ngModel)]="reactiveForm.value.ratingField"></tc-input>-->
-<!--		</div>-->
+			<tc-input [readonly]="true" [(ngModel)]="reactiveForm.value.ratingField"></tc-input>
+		</div>
 
-<!--		<div class="col-12 col-md-6">-->
-<!--			<tc-form-group>-->
-<!--				<tc-form-label>Template driven form</tc-form-label>-->
+		<div class="col-12 col-md-6">
+			<tc-form-group>
+				<tc-form-label>Template driven form</tc-form-label>
 
-<!--				<tc-rating #templateForm [ngModel]="8" [itemsNumber]="10"></tc-rating>-->
-<!--			</tc-form-group>-->
+				<tc-rating #templateForm [ngModel]="8" [itemsNumber]="10"></tc-rating>
+			</tc-form-group>
 
-<!--			<tc-input [readonly]="true" [(ngModel)]="templateForm.value"></tc-input>-->
-<!--		</div>-->
-<!--	</div>-->
-<!--</tc-card>-->
+			<tc-input [readonly]="true" [(ngModel)]="templateForm.value"></tc-input>
+		</div>
+	</div>
+</tc-card>

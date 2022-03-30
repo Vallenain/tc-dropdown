@@ -35,6 +35,7 @@
     "@ngx-tc/form-label": "^0.0.2",
     "@ngx-tc/input": "^0.0.4",
     "@ngx-tc/rating": "^0.0.2",
+    "@ngx-tc/alert": "^0.0.1",
     "express": "^4.17.2",
     "ngx-malihu-scrollbar": "9.0.0",
     "path": "0.12.7",
