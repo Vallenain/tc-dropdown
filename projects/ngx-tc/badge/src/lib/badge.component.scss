@@ -1,0 +1,99 @@
+@use 'sass:math';
+@import '~@ngx-tc/base/src/assets/scss/base.scss';
+
+$_types: ('primary', 'accent', 'success', 'info', 'warning', 'error');
+
+:host {
+  --tc-badge-fs: var(--tc-base-fs);
+  --tc-badge-ff: var(--tc-base-ff);
+  --tc-badge-fw: var(--tc-base-fw);
+  --tc-badge-module-rem: var(--tc-base-module-rem);
+  --tc-badge-lh: var(--tc-base-lh);
+  --tc-badge-text-transform: none;
+  --tc-badge-shape: #{toRem(500)};
+  --tc-badge-shadow: none;
+  --tc-badge-border-width: #{toRem(1)};
+  --tc-badge-border-style: solid;
+  --tc-badge-border-color: transparent;
+  --tc-badge-padding: calc(var(--tc-badge-module-rem) * .5 - var(--tc-badge-border-width)) calc(var(--tc-badge-module-rem) * 2 - var(--tc-badge-border-width));
+  --tc-badge-transition: var(--tc-base-animation);
+  --tc-badge-bg: transparent;
+  --tc-badge-color: var(--tc-color-primary);
+
+  align-items: center;
+  background: var(--tc-badge-bg);
+  border: var(--tc-badge-border-width) var(--tc-badge-border-style) var(--tc-badge-border-color);
+  border-radius: var(--tc-badge-shape);
+  box-shadow: var(--tc-badge-shadow);
+  color: var(--tc-badge-color);
+  display: inline-flex;
+  font-size: var(--tc-badge-fs);
+  font-family: var(--tc-badge-ff);
+  font-weight: var(--tc-badge-fw);
+  line-height: var(--tc-badge-lh);
+	padding: var(--tc-badge-padding);
+  position: relative;
+  text-transform: var(--tc-badge-text-transform);
+  vertical-align: top;
+
+  &.badge-xs {
+    --tc-badge-fs: calc(var(--tc-base-fs) * .7);
+    --tc-badge-lh: 1.1;
+    --tc-badge-padding: calc(var(--tc-badge-module-rem) * .25 - var(--tc-badge-border-width)) calc(var(--tc-badge-module-rem) * .5 - var(--tc-badge-border-width));
+  }
+  &.badge-sm {
+    --tc-badge-fs: calc(var(--tc-base-fs) * .8);
+    --tc-badge-lh: 1.34;
+    --tc-badge-padding: calc(var(--tc-badge-module-rem) * .25 - var(--tc-badge-border-width)) calc(var(--tc-badge-module-rem) - var(--tc-badge-border-width));
+  }
+  &.badge-lg {
+    --tc-badge-fs: calc(var(--tc-base-fs) * 1.2);
+    --tc-badge-lh: 1.19;
+    --tc-badge-padding: calc(var(--tc-badge-module-rem) - var(--tc-badge-border-width)) calc(var(--tc-badge-module-rem) * 3 - var(--tc-badge-border-width));
+  }
+
+  // colors - (primary, accent, success, info, warning, error)
+  @each $type in $_types {
+    &.badge-#{$type} {
+      --tc-badge-bg: var(--tc-color-#{$type});
+      --tc-badge-border-color: var(--tc-color-#{$type});
+      --tc-badge-color: var(--tc-color-#{$type}-contrast);
+
+      &.badge-outline {
+        background: transparent !important;
+        --tc-badge-color: var(--tc-color-#{$type});
+      }
+    }
+  }
+
+  .arrow {
+    border: #{toRem(6)} solid transparent;
+    height: 0;
+    position: absolute;
+    width: 0;
+  }
+  &.arrow-top .arrow {
+    border-bottom-color: inherit;
+    bottom: 100%;
+    left: 50%;
+    margin-left: #{toRem(-6)};
+  }
+  &.arrow-right .arrow {
+    border-left-color: inherit;
+    left: 100%;
+    margin-top: #{toRem(-6)};
+    top: 50%;
+  }
+  &.arrow-bottom .arrow {
+    border-top-color: inherit;
+    left: 50%;
+    margin-left: #{toRem(-6)};
+    top: 100%;
+  }
+  &.arrow-left .arrow {
+    border-right-color: inherit;
+    margin-top: #{toRem(-6)};
+    right: 100%;
+    top: 50%;
+  }
+}

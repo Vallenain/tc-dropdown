@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-12 col-md-6">
+    <tc-card [title]="'Image'">
+      <div class="demo-list">
+        <tc-avatar [src]="'assets/content/avatar-1.jpg'" [initials]="'JD'"></tc-avatar>
+        <tc-avatar [src]="'assets/content/avatar-2.jpg'" [initials]="'JD'"></tc-avatar>
+        <tc-avatar [src]="'assets/content/avatar-3.jpg'" [initials]="'JD'"></tc-avatar>
+      </div>
+    </tc-card>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <tc-card [title]="'Initials'">
+      <div class="demo-list">
+        <tc-avatar [initials]="'AI'"></tc-avatar>
+        <tc-avatar [initials]="'GF'"></tc-avatar>
+        <tc-avatar [initials]="'JP'"></tc-avatar>
+      </div>
+    </tc-card>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <tc-card [title]="'Size'">
+      <div class="demo-list">
+        <tc-avatar [size]="80" [src]="'assets/content/person-2.jpg'"></tc-avatar>
+        <tc-avatar [size]="60" [initials]="'RM'"></tc-avatar>
+        <tc-avatar [src]="'assets/content/avatar-6.jpg'"></tc-avatar>
+        <tc-avatar [size]="20" [initials]="'W'"></tc-avatar>
+      </div>
+    </tc-card>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <tc-card [title]="'Shape'">
+      <div class="demo-list">
+        <tc-avatar [src]="'assets/content/avatar-3.jpg'" [initials]="'RD'" [tcShape]="20"></tc-avatar>
+        <tc-avatar [initials]="'DT'" [tcShape]="15"></tc-avatar>
+        <tc-avatar [src]="'assets/content/avatar-4.jpg'" [initials]="'JL'" [tcShape]="10"></tc-avatar>
+        <tc-avatar [initials]="'NA'" [tcShape]="5"></tc-avatar>
+        <tc-avatar [src]="'assets/content/avatar-5.jpg'" [initials]="'QL'" [tcShape]="0"></tc-avatar>
+      </div>
+    </tc-card>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <tc-card [title]="'Loading'" class="mb-md-0">
+      <div class="demo-list">
+        <tc-avatar [src]="'assets/content/avatar-1.jpg'" [loading]="true"></tc-avatar>
+        <tc-avatar [src]="'assets/content/avatar-2.jpg'" [loading]="true" [tcShape]="10"></tc-avatar>
+        <tc-avatar [src]="'assets/content/avatar-3.jpg'" [loading]="true" [tcShape]="5"></tc-avatar>
+        <tc-avatar [src]="'assets/content/avatar-4.jpg'" [loading]="true" [tcShape]="0"></tc-avatar>
+      </div>
+    </tc-card>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <tc-card [title]="'With badges'" class="mb-0">
+      <div class="demo-list">
+        <tc-avatar [src]="'assets/content/avatar-6.jpg'" [badge]="true"></tc-avatar>
+        <tc-avatar [src]="'assets/content/avatar-5.jpg'" [badge]="true" [badgeBg]="'#e24d4d'"></tc-avatar>
+        <tc-avatar [src]="'assets/content/avatar-3.jpg'" [badge]="true" [badgeBg]="'#81C784'"></tc-avatar>
+        <tc-avatar [src]="'assets/content/avatar-4.jpg'" [badge]="true" [badgeBg]="'#FFB74D'"></tc-avatar>
+      </div>
+    </tc-card>
+  </div>
+</div>

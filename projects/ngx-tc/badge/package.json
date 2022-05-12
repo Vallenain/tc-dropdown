@@ -1,0 +1,20 @@
+{
+  "name": "@ngx-tc/badge",
+  "version": "0.0.1",
+  "author": "type0code",
+  "license": "MIT",
+  "description": "Angular UI components library",
+  "keywords": ["angular", "angular UI", "angular components", "ng", "ngx", "angular form", "angular control", "angular badge"],
+  "repository": "https://github.com/ngx-tc/badge",
+  "config": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@angular/common": "^13.1.0",
+    "@angular/core": "^13.1.0",
+    "@ngx-tc/base": "^0.0.12"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}
