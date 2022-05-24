@@ -1,0 +1,131 @@
+@use 'sass:math';
+@import '~@ngx-tc/base/src/assets/scss/base.scss';
+
+$_types: ('primary', 'accent', 'success', 'info', 'warning', 'error');
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+:host {
+  --tc-file-fs: #{toRem(11)};
+  --tc-file-ff: var(--tc-base-ff);
+  --tc-file-fw: var(--tc-base-fw);
+  --tc-file-lh: var(--tc-base-lh);
+  --tc-file-text-transform: none;
+  --tc-file-module-rem: var(--tc-base-module-rem);
+  --tc-file-size: #{toRem(120)};
+  --tc-file-color: inherit;
+  --tc-file-preview-bg: var(--tc-color-primary);
+  --tc-file-preview-color: var(--tc-color-primary-contrast);
+  --tc-file-preview-shape: var(--tc-base-shape);
+  --tc-file-preview-shadow: var(--tc-base-shadow);
+  --tc-file-preview-fs: calc(var(--tc-file-size) * .3);
+  --tc-file-transition: var(--tc-base-animation, ease-in-out);
+
+  display: inline-flex;
+  flex-direction: column;
+  width: var(--tc-file-size);
+
+  .file-prev {
+    align-items: center;
+    background: var(--tc-file-preview-bg);
+    border-radius: var(--tc-file-preview-shape);
+    box-shadow: var(--tc-file-preview-shadow);
+    color: var(--tc-file-preview-color);
+    display: flex;
+    font-size: var(--tc-file-preview-fs);
+    justify-content: center;
+    overflow: hidden;
+    padding-top: 100%;
+    position: relative;
+    width: 100%;
+
+    .icon {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      height: 100%;
+      left: 0;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      width: 100%;
+
+      > img {
+        height: 100%;
+        width: 100%;
+      }
+      svg {
+        fill: currentColor;
+        height: var(--tc-file-preview-fs);
+        width: var(--tc-file-preview-fs);
+      }
+      .loader {
+        animation: rotation 1s infinite linear;
+      }
+    }
+    .delete {
+      background: rgba(#000,.1);
+      border: 0;
+      color: inherit;
+      cursor: pointer;
+      line-height: 0;
+      outline: none;
+      padding: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: color .2s var(--tc-file-transition);
+
+      svg {
+        fill: currentColor;
+      }
+      .rtl & {
+        left: 0;
+        right: auto;
+      }
+      &:hover {
+        color: var(--tc-color-error, #f00);
+      }
+    }
+  }
+  .file-name {
+    color: var(--tc-file-color);
+    display: flex;
+    flex-wrap: nowrap;
+    font-size: var(--tc-file-fs);
+    font-family: var(--tc-file-ff);
+    font-weight: var(--tc-file-fw);
+    justify-content: flex-end;
+    line-height: var(--tc-file-lh);
+    margin-top: #{toRem(3)};
+    text-transform: var(--tc-file-text-transform);
+    white-space: nowrap;
+
+    .rtl & {
+      justify-content: flex-start;
+    }
+    .name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  &.file-sm {
+    --tc-file-size: #{toRem(50)};
+  }
+  &.file-lg {
+    --tc-file-size: #{toRem(180)};
+  }
+  // colors - (primary, accent, success, info, warning, error)
+  @each $type in $_types {
+    &.file-#{$type} {
+      --tc-file-preview-bg: var(--tc-color-#{$type});
+      --tc-file-preview-color: var(--tc-color-#{$type}-contrast);
+    }
+  }
+}
