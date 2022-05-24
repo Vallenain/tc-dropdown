@@ -1,9 +1,0 @@
-@import '~@ngx-tc/base/src/assets/scss/base.scss';
-
-:host {
-  --tc-form-group-margin: 0 0 calc(var(--tc-base-module-rem) * 2);
-
-  color: var(--tc-form-description-color);
-  display: block;
-  margin: var(--tc-form-group-margin);
-}
