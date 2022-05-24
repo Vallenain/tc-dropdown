@@ -7,6 +7,14 @@
         "dist/ngx-tc/alert/ngx-tc-alert",
         "dist/ngx-tc/alert"
       ],
+      "@ngx-tc/avatar": [
+        "dist/ngx-tc/avatar/ngx-tc-avatar",
+        "dist/ngx-tc/avatar"
+      ],
+      "@ngx-tc/badge": [
+        "dist/ngx-tc/badge/ngx-tc-badge",
+        "dist/ngx-tc/badge"
+      ],
       "@ngx-tc/base": [
         "dist/ngx-tc/base/ngx-tc-base",
         "dist/ngx-tc/base"
@@ -18,6 +26,10 @@
       "@ngx-tc/card": [
         "dist/ngx-tc/card/ngx-tc-card",
         "dist/ngx-tc/card"
+      ],
+      "@ngx-tc/file": [
+        "dist/ngx-tc/file/ngx-tc-file",
+        "dist/ngx-tc/file"
       ],
       "@ngx-tc/form-description": [
         "dist/ngx-tc/form-description/ngx-tc-form-description",

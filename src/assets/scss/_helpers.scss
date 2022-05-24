@@ -36,6 +36,16 @@
     margin: $module-rem * 0.5;
   }
 }
+.elements-list {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  margin: -($module-rem * 0.5);
+
+  > * {
+    margin: $module-rem * 0.5 !important;
+  }
+}
 .chat-container {
   height: 200px !important;
   position: relative;

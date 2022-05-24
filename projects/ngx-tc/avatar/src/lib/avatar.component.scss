@@ -1,31 +1,49 @@
-@import '~src/assets/scss/variables';
+@use 'sass:math';
+@import '~@ngx-tc/base/src/assets/scss/base.scss';
 
-$_module-rem: $module-rem;
-
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
 :host {
+  --tc-avatar-bg: var(--tc-color-primary, rgba(0,0,0,.1));
+  --tc-avatar-color: var(--tc-color-primary-contrast);
+  --tc-avatar-badge-bg: var(--tc-color-accent);
+  --tc-avatar-ff: inherit;
+  --tc-avatar-fw: 500;
+  --tc-avatar-module-rem: var(--tc-base-module-rem);
+  --tc-avatar-size: calc(var(--tc-avatar-module-rem) * 4);
+  --tc-avatar-fs: calc(var(--tc-avatar-size) * .5);
+  --tc-avatar-text-transform: uppercase;
+
   align-items: center;
-  background: rgba(#000,.1);
+  background: var(--tc-avatar-bg);
   border-radius: 50%;
+  color: var(--tc-avatar-color);
   display: flex;
-  font-size: 30px;
-  font-weight: 700;
-  height: $_module-rem * 4;
+  font-size: var(--tc-avatar-fs);
+  font-weight: var(--tc-avatar-fw);
+  height: var(--tc-avatar-size);
   justify-content: center;
   line-height: 1;
-  margin: 0 ($_module-rem * 2) 0 0;
-  overflow: hidden;
+  margin: 0;
   position: relative;
-  text-transform: uppercase;
-  width: $_module-rem * 4;
+  text-transform: var(--tc-avatar-text-transform);
+  width: var(--tc-avatar-size);
 
   img {
-    max-height: 100%;
-    max-width: 100%;
+    border-radius: inherit;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
   }
   .avatar-loader {
     align-items: center;
     border-radius: inherit;
-    color: rgba(#000,.5);
     display: flex;
     font-size: inherit;
     height: 100%;
@@ -35,8 +53,22 @@ $_module-rem: $module-rem;
     top: 0;
     visibility: hidden;
     width: 100%;
+
+    .icon {
+      fill: currentColor;
+      animation: rotation 1s infinite linear;
+    }
   }
-  &.avatar-loading {
+  .avatar-badge {
+    background: var(--tc-avatar-badge-bg);
+    border-radius: 50%;
+    height: 8px;
+    position: absolute;
+    right: 6%;
+    top: 6%;
+    width: 8px;
+  }
+  &.avatar-load {
     img,
     .initials {
       visibility: hidden;

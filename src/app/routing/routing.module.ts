@@ -4,15 +4,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { VerticalLayoutComponent } from '../layout/vertical';
 import { PublicLayoutComponent } from '../layout/public';
 
-import { PageInputsComponent } from '../pages/inputs';
-import { PageCardsComponent } from '../pages/cards';
-import { PageButtonsComponent } from '../pages/buttons';
-import { PageRatingsComponent } from '../pages/ratings';
-import { PageAlertsComponent } from '../pages/alerts';
+import { PageInputsComponent } from '../pages/inputs/inputs.component';
+import { PageCardsComponent } from '../pages/cards/cards.component';
+import { PageButtonsComponent } from '../pages/buttons/buttons.component';
+import { PageRatingsComponent } from '../pages/ratings/ratings.component';
+import { PageAlertsComponent } from '../pages/alerts/alerts.component';
+import { PageAvatarsComponent } from '../pages/avatars/avatars.component';
+import { PageBadgesComponent } from '../pages/badges/badges.component';
+import { PageFilesComponent } from '../pages/files/files.component';
 // import { PageSelectsComponent } from '../pages/selects';
 // import { PageTextareasComponent } from '../pages/textareas';
 // import { PageAutocompletesComponent } from '../pages/autocompletes';
-// import { PageBadgesComponent } from '../pages/badges';
 // import { PageCheckboxesComponent } from '../pages/checkboxes';
 // import { PageRadioButtonsComponent } from '../pages/radio-buttons';
 // import { PageSwitchersComponent } from '../pages/switchers';
@@ -20,7 +22,7 @@ import { PageAlertsComponent } from '../pages/alerts';
 // import { PageModalWindowsComponent } from '../pages/modal-windows';
 // import { PageVTimelineComponent } from '../pages/v-timeline';
 // import { PageDatepickersComponent } from '../pages/datepickers';
-import { Page404Component } from '../pages/page-404';
+import { Page404Component } from '../pages/page-404/page-404.component';
 
 const privateRoutes: Routes = [
   { path: 'inputs', component: PageInputsComponent },
@@ -28,10 +30,12 @@ const privateRoutes: Routes = [
   { path: 'buttons', component: PageButtonsComponent },
   { path: 'ratings', component: PageRatingsComponent },
   { path: 'alerts', component: PageAlertsComponent },
+  { path: 'avatars', component: PageAvatarsComponent },
+  { path: 'badges', component: PageBadgesComponent },
+  { path: 'files', component: PageFilesComponent },
   // { path: 'selects', component: PageSelectsComponent },
   // { path: 'textareas', component: PageTextareasComponent },
   // { path: 'autocompletes', component: PageAutocompletesComponent },
-  // { path: 'badges', component: PageBadgesComponent },
   // { path: 'checkboxes', component: PageCheckboxesComponent },
   // { path: 'contacts', component: PageContactsComponent },
   // { path: 'datepickers', component: PageDatepickersComponent },

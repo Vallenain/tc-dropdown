@@ -8,6 +8,14 @@
     "routing": "alerts"
   },
   {
+    "title": "Avatars",
+    "routing": "avatars"
+  },
+  {
+    "title": "Badges",
+    "routing": "badges"
+  },
+  {
     "title": "Buttons",
     "routing": "buttons"
   },
@@ -16,11 +24,15 @@
     "routing": "cards"
   },
   {
+    "title" : "Files",
+    "routing": "files"
+  },
+  {
     "title" : "Inputs",
     "routing": "inputs"
   },
   {
-    "title" : "Rating",
+    "title" : "Ratings",
     "routing": "ratings"
   }
 ]

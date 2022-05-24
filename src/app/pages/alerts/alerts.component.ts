@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
-import { BasePageComponent } from '../base-page';
+import { BasePageComponent } from '../base-page/base-page.component';
 import { IAppState } from '../../interfaces/app-state';
 import { HttpService } from '../../services/http/http.service';
 

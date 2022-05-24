@@ -13,5 +13,7 @@ export * from './lib/directives/gradient/gradient.directive';
 export * from './lib/directives/shape/shape.directive';
 export * from './lib/interfaces/control-properties';
 export * from './lib/interfaces/general';
+export * from './lib/interfaces/size';
+export * from './lib/interfaces/view';
 export * from './lib/helpers/control-properties';
 export * from './lib/base.module';

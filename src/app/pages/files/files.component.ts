@@ -1,21 +1,19 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Store } from '@ngrx/store';
-import { view } from '@ngx-tc/base';
-import { badgeArrow, badgeSize } from '@ngx-tc/badge';
+import { size, view } from '@ngx-tc/base';
 
 import { BasePageComponent } from '../base-page/base-page.component';
 import { IAppState } from '../../interfaces/app-state';
 import { HttpService } from '../../services/http/http.service';
 
 @Component({
-  selector: 'page-badges',
-  templateUrl: './badges.component.html',
-  styleUrls: ['./badges.component.scss']
+  selector: 'page-files',
+  templateUrl: './files.component.html',
+  styleUrls: ['./files.component.scss']
 })
-export class PageBadgesComponent extends BasePageComponent implements OnInit, OnDestroy {
-  arrowPosition = badgeArrow;
-  badgeSizes = badgeSize;
+export class PageFilesComponent extends BasePageComponent implements OnInit, OnDestroy {
+  size = size;
   views = view;
 
   constructor(
@@ -25,7 +23,7 @@ export class PageBadgesComponent extends BasePageComponent implements OnInit, On
     super(store, httpSv);
 
     this.pageData = {
-      title: 'Badges',
+      title: 'Files',
       loaded: true,
       breadcrumbs: [
         {
@@ -33,7 +31,7 @@ export class PageBadgesComponent extends BasePageComponent implements OnInit, On
           route: '/'
         },
         {
-          title: 'Badges'
+          title: 'Files'
         }
       ]
     };
