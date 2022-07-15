@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { NavigationEnd, Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
@@ -20,13 +20,13 @@ export class BaseLayoutComponent implements OnInit {
   loaded: boolean;
   pageData: IPageData;
   appSettings: IAppSettings;
-  searchForm: FormGroup;
+  searchForm: UntypedFormGroup;
   searchData: any[];
   scrolled: boolean;
 
   constructor(
     public store: Store<IAppState>,
-    public fb: FormBuilder,
+    public fb: UntypedFormBuilder,
     public httpSv: HttpService,
     public router: Router,
     public elRef: ElementRef

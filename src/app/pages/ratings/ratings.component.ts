@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
 
@@ -13,12 +13,12 @@ import { HttpService } from '../../services/http/http.service';
   styleUrls: ['./ratings.component.scss']
 })
 export class PageRatingsComponent extends BasePageComponent implements OnInit, OnDestroy {
-  reactiveForm: FormGroup;
+  reactiveForm: UntypedFormGroup;
 
   constructor(
     store: Store<IAppState>,
     httpSv: HttpService,
-    private formBuilder: FormBuilder
+    private formBuilder: UntypedFormBuilder
   ) {
     super(store, httpSv);
 
@@ -55,5 +55,7 @@ export class PageRatingsComponent extends BasePageComponent implements OnInit, O
     this.reactiveForm = this.formBuilder.group({
       ratingField: [4]
     });
+
+    console.log(this.reactiveForm)
   }
 }

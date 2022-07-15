@@ -2,7 +2,7 @@ import {
   Component, OnInit, HostBinding, Input, ElementRef, HostListener, forwardRef, Output, EventEmitter,
   Renderer2, ContentChild, TemplateRef
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, UntypedFormControl } from '@angular/forms';
 
 import { IOption } from '../../interfaces/option';
 import { selectState } from '../../interfaces/general';
@@ -73,7 +73,7 @@ export class TCSelectComponent implements OnInit, ControlValueAccessor {
   innerValue: string | string[];
   selectedOptions: IOption[];
   selectState: any;
-  filterForm: FormControl;
+  filterForm: UntypedFormControl;
   currentBgColor: string;
   currentColor: string;
   currentBorderColor: string;
@@ -92,7 +92,7 @@ export class TCSelectComponent implements OnInit, ControlValueAccessor {
     this.allowClear = false;
     this.disabled = false;
     this.filter = false;
-    this.filterForm = new FormControl('');
+    this.filterForm = new UntypedFormControl('');
     this.notFoundMsg = 'No results found!';
     this.opened = false;
     this.valueSelected = new EventEmitter();

@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
@@ -20,7 +20,7 @@ import * as SettingsActions from '../../store/actions/app-settings.actions';
 export class VerticalLayoutComponent extends BaseLayoutComponent implements OnInit {
   constructor(
     store: Store<IAppState>,
-    fb: FormBuilder,
+    fb: UntypedFormBuilder,
     httpSv: HttpService,
     router: Router,
     elRef: ElementRef
