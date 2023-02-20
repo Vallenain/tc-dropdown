@@ -21,7 +21,7 @@ import { LayoutModule } from './layout/layout.module';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    RouterModule.forRoot(ROUTES, { useHash: true, relativeLinkResolution: 'legacy' }),
+    RouterModule.forRoot(ROUTES, { useHash: true }),
     StoreModule.forRoot({
       pageData: pageDataReducer,
       appSettings: appSettingsReducer

@@ -1,4 +1,4 @@
-@import '~src/assets/scss/variables';
+@import 'src/assets/scss/variables';
 
 $_module-rem: $module-rem;
 $_bg: #fff;
@@ -41,7 +41,7 @@ $_sl-color-hover: accent-palette(500);
       display: flex;
       justify-content: center;
       margin: 0 (-$_module-rem * 0.5) ($_module-rem * 2);
-      
+
       .link {
         color: $_sl-color;
         display: block;
