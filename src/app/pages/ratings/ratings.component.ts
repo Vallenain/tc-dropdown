@@ -55,7 +55,5 @@ export class PageRatingsComponent extends BasePageComponent implements OnInit, O
     this.reactiveForm = this.formBuilder.group({
       ratingField: [4]
     });
-
-    console.log(this.reactiveForm)
   }
 }
