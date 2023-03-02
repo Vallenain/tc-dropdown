@@ -1,0 +1,90 @@
+@use 'sass:math';
+@import '@ngx-tc/base/src/assets/scss/base.scss';
+
+:host {
+  --tc-dropdown-fs: var(--tc-base-fs);
+  --tc-dropdown-ff: var(--tc-base-ff);
+  --tc-dropdown-fw: var(--tc-base-fw);
+  --tc-dropdown-module-rem: var(--tc-base-module-rem);
+  --tc-dropdown-lh: var(--tc-base-lh);
+  --tc-dropdown-shape: #{var(--tc-base-shape)};
+  --tc-dropdown-shadow: var(--tc-base-shadow);
+  --tc-dropdown-bg: #fff;
+  --tc-dropdown-overlay-bg: #{rgba(#000,.1)};
+  --tc-dropdown-animation: ease-in-out;
+  --tc-dropdown-width: #{toRem(200)};
+  --tc-dropdown-max-width: 100vw;
+  --tc-dropdown-max-height: #{toRem(280)};
+  --tc-dropdown-left: 0;
+  --tc-dropdown-padding: 0;
+  --tc-dropdown-top: 100%;
+  --tc-dropdown-transform: none;
+  --tc-dropdown-margin: #{toRem(5)} 0;
+
+  .tc-dropdown-content {
+    background: var(--tc-dropdown-bg);
+    border-radius: var(--tc-dropdown-shape);
+    box-shadow: var(--tc-dropdown-shadow);
+    left: var(--tc-dropdown-left);
+    margin: var(--tc-dropdown-margin);
+    max-height: var(--tc-dropdown-max-height);
+    max-width: var(--tc-dropdown-max-width, 100vw);
+    opacity: 0;
+    padding: var(--tc-dropdown-padding, 0);
+    position: absolute;
+    top: var(--tc-dropdown-top);
+    transform: var(--tc-dropdown-transform);
+    transition:
+      .2s opacity 0s var(--tc-dropdown-animation),
+      .2s transform 0s var(--tc-dropdown-animation),
+      0s visibility .2s var(--tc-dropdown-animation);
+    visibility: hidden;
+    width: var(--tc-dropdown-width);
+    z-index: 9998;
+  }
+  .tc-dropdown-overlay {
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    visibility: hidden;
+    z-index: 9997;
+
+    &.tc-dropdown-overlay-bg {
+      background: var(--tc-dropdown-overlay-bg);
+    }
+  }
+  &.fadeInUp-animation {
+    --tc-dropdown-transform: translateY(30px);
+  }
+  &.fadeInDown-animation {
+    --tc-dropdown-transform: translateY(-30px);
+  }
+  &.fadeInLeft-animation {
+    --tc-dropdown-transform: translateX(100%);
+  }
+  &.fadeInRight-animation {
+    --tc-dropdown-transform: translateX(-100%);
+  }
+  &.zoom-animation {
+    --tc-dropdown-transform: scale(0);
+  }
+  &.opened {
+    --tc-dropdown-transform: translate(0);
+
+    &.zoom-animation {
+      --tc-dropdown-transform: scale(1);
+    }
+    .tc-dropdown-content,
+    .tc-dropdown-overlay {
+      opacity: 1;
+      transition:
+        .2s opacity 0s var(--tc-dropdown-animation),
+        .2s transform 0s var(--tc-dropdown-animation),
+        0s visibility 0s var(--tc-dropdown-animation);
+      visibility: visible;
+    }
+  }
+}
