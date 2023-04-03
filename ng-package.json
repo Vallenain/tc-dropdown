@@ -3,8 +3,5 @@
   "dest": "../../../dist/ngx-tc/dropdown",
   "lib": {
     "entryFile": "src/public-api.ts"
-  },
-  "assets": [
-    "~@ngx-tc/base/src/assets/scss/base.scss"
-  ]
+  }
 }
