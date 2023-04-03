@@ -8,23 +8,38 @@ One of the standout features of this library is its exceptional flexibility. Dev
 
 Overall, @ngx-tc/dropdown is a powerful tool for creating engaging and customizable dropdown menus in Angular applications. Its comprehensive feature set and ease of integration make it an ideal choice for developers who want to create dropdown menus that not only look great but also offer an exceptional user experience.
 
-## Code scaffolding
+## Usage
 
-Run `ng generate component component-name --project dropdown` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project dropdown`.
-> Note: Don't forget to add `--project dropdown` or else it will be added to the default project in your `angular.json` file. 
+Install `@ngx-tc/dropdown` in your project:
 
-## Build
+```
+npm install @ngx-tc/dropdown
+```
 
-Run `ng build dropdown` to build the project. The build artifacts will be stored in the `dist/` directory.
+Import `TcDropdownModule` e.g. in your `app.module.ts`:
+```typescript
+import { TcDropdownModule } from '@ngx-tc/dropdown';
 
-## Publishing
+@NgModule({
+  imports: [
+    ...
+    TcDropdownModule
+  ],
+})
+export class AppModule {}
+```
 
-After building your library with `ng build dropdown`, go to the dist folder `cd dist/dropdown` and run `npm publish`.
+Use the `tc-dropdown` component in you app:
+```html
+<tc-dropdown>
+  <a href="#" tc-dropdown-trigger>Dropdown link</a>
+  
+  <ng-container tc-dropdown-content>
+    Dropdown content
+  </ng-container>
+</tc-dropdown>
+```
 
-## Running unit tests
-
-Run `ng test dropdown` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Demo
+To view a working demo of the library in action, please follow the provided link. The demo will allow you to explore the various components and features included in this library and see how they can be used in your Angular applications.
+[http://tc-library.type-code.pro/#/components/dropdowns](http://tc-library.type-code.pro/#/components/dropdowns)
