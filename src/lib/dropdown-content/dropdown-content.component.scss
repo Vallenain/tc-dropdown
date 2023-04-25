@@ -15,7 +15,7 @@
   --tc-dropdown-width: #{toRem(200)};
   --tc-dropdown-max-width: 100vw;
   --tc-dropdown-max-height: #{toRem(280)};
-  --tc-dropdown-left: 0;
+  --tc-dropdown-inset-start: 0;
   --tc-dropdown-padding: 0;
   --tc-dropdown-top: 100%;
   --tc-dropdown-transform: none;
@@ -25,7 +25,8 @@
     background: var(--tc-dropdown-bg);
     border-radius: var(--tc-dropdown-shape);
     box-shadow: var(--tc-dropdown-shadow);
-    left: var(--tc-dropdown-left);
+    inset-inline-start: var(--tc-dropdown-inset-start);
+    //left: var(--tc-dropdown-left);
     margin: var(--tc-dropdown-margin);
     max-height: var(--tc-dropdown-max-height);
     max-width: var(--tc-dropdown-max-width, 100vw);

@@ -21,7 +21,7 @@ export class DropdownContentComponent implements OnInit {
   @HostBinding('class.opened') @Input() opened: boolean = false;
   @HostBinding('class.tc-dropdown-content-outside') @Input() appendToBody: boolean;
   @HostBinding('class') @Input() panelClass: string;
-  @HostBinding('style.--tc-dropdown-left.px') private positionLeft: number;
+  @HostBinding('style.--tc-dropdown-inset-start.px') private positionStart: number;
   @HostBinding('style.--tc-dropdown-top.px') private positionTop: number;
   @HostBinding('style.--tc-dropdown-width.px') @Input() width: number;
   @HostBinding('style.--tc-dropdown-max-height.px') @Input() maxHeight: number;
@@ -85,7 +85,8 @@ export class DropdownContentComponent implements OnInit {
 
   // set dropdown content parameters
   setParameters(params: DOMRect) {
-    this.positionLeft = params.left;
+    console.log(params)
+    this.positionStart = params.left;
     this.positionTop = params.top + params.height;
   }
 }
