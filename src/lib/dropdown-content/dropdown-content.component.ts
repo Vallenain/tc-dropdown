@@ -11,6 +11,8 @@ import {
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
+import { Align } from '@ngx-tc/base';
+
 @Component({
   selector: 'tc-dropdown-content',
   templateUrl: './dropdown-content.component.html',
@@ -20,15 +22,21 @@ export class DropdownContentComponent implements OnInit {
   @HostBinding('class.tc-dropdown-content-wrap') dropdownContent = true;
   @HostBinding('class.opened') @Input() opened: boolean = false;
   @HostBinding('class.tc-dropdown-content-outside') @Input() appendToBody: boolean;
-  @HostBinding('class') @Input() panelClass: string;
-  @HostBinding('style.--tc-dropdown-left.px') private positionLeft: number;
+  @HostBinding('class') get additionalClasses(): string {
+    return `tc-dropdown-content-${this.align} ${this.panelClass || ''}`;
+  }
+  @HostBinding('style.--tc-dropdown-position-start.px') private positionStart: number;
   @HostBinding('style.--tc-dropdown-top.px') private positionTop: number;
+  @HostBinding('style.--tc-dropdown-trigger-width.px') @Input() triggerWidth: number;
   @HostBinding('style.--tc-dropdown-width.px') @Input() width: number;
   @HostBinding('style.--tc-dropdown-max-height.px') @Input() maxHeight: number;
   @HostBinding('style.--tc-dropdown-bg') @Input() bg: string;
+  @Input() panelClass: string;
+  @Input() align: Align;
   @Input() overlay: boolean;
   @Input() animation: string;
   @Output() closeDropdown: EventEmitter<void> = new EventEmitter<void>();
+  direction: 'ltr' | 'rtl' = 'ltr';
 
   // animation type
   @HostBinding('class.fadeInUp-animation') get fadeInUp () {
@@ -63,7 +71,9 @@ export class DropdownContentComponent implements OnInit {
   constructor(
     private element: ElementRef,
     @Inject(DOCUMENT) private document: Document
-  ) { }
+  ) {
+    this.direction = this.document.dir && this.document.dir === 'rtl' ? 'rtl' : 'ltr';
+  }
 
   ngOnInit() { }
 
@@ -85,7 +95,12 @@ export class DropdownContentComponent implements OnInit {
 
   // set dropdown content parameters
   setParameters(params: DOMRect) {
-    this.positionLeft = params.left;
+    if (this.direction === 'rtl') {
+      this.positionStart = this.document.body.offsetWidth - params.left - this.triggerWidth;
+    } else {
+      this.positionStart = params.left;
+    }
+
     this.positionTop = params.top + params.height;
   }
 }
