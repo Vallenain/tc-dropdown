@@ -7,6 +7,8 @@ import {
   ViewChild
 } from '@angular/core';
 
+import { Align, align } from '@ngx-tc/base';
+
 import { DropdownTriggerDirective } from './dropdown-trigger/dropdown-trigger.directive';
 import { DropdownContentComponent } from './dropdown-content/dropdown-content.component';
 import { DropdownHostDirective } from './dropdown-host/dropdown-host.directive';
@@ -27,6 +29,7 @@ export class DropdownComponent implements OnInit {
   @Input() maxHeight: number;
   @Input() bg: string;
   @Input() panelClass: string;
+  @Input() align: Align = align.start;
   delay: number = 0;
 
   constructor() {}
@@ -74,20 +77,24 @@ export class DropdownComponent implements OnInit {
   }
 
   setComponentProperties(component: DropdownContentComponent) {
+    const triggerParams: DOMRect = this.dropdownButton.getTriggerParams();
+
     component.overlay = this.overlay;
     component.appendToBody = this.appendToBody;
     component.animation = this.animation;
     component.width = this.width;
+    component.triggerWidth = triggerParams.width;
     component.maxHeight = this.maxHeight;
     component.bg = this.bg;
     component.panelClass = this.panelClass;
+    component.align = this.align;
 
     // append dropdown content to the body
     if (this.appendToBody) {
       this.delay = 100;
 
       component.appendComponentToBody();
-      component.setParameters(this.dropdownButton.getTriggerParams());
+      component.setParameters(triggerParams);
     }
 
     setTimeout(() => {
