@@ -1,4 +1,10 @@
-<div class="tc-dropdown-content">
+<div
+  class="tc-dropdown-content"
+  [style.--tc-dropdown-position-below.px]="(positionBelow$ | async)"
+  [style.--tc-dropdown-position-above.px]="(positionAbove$ | async)"
+  [style.--tc-dropdown-position-start.px]="(positionStart$ | async)"
+  [style.--tc-dropdown-trigger-width.px]="(triggerParams$ | async)?.width"
+>
   <ng-content></ng-content>
 </div>
 

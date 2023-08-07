@@ -10,8 +10,18 @@ import {
   Output
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import {
+  combineLatest,
+  map,
+  Observable,
+  fromEvent,
+  startWith,
+  distinctUntilChanged,
+  shareReplay,
+} from 'rxjs';
 
 import { Align } from '@ngx-tc/base';
+import { Position } from '../dropdown.component';
 
 @Component({
   selector: 'tc-dropdown-content',
@@ -19,24 +29,31 @@ import { Align } from '@ngx-tc/base';
   styleUrls: ['./dropdown-content.component.scss']
 })
 export class DropdownContentComponent implements OnInit {
-  @HostBinding('class.tc-dropdown-content-wrap') dropdownContent = true;
+  @HostBinding('class.tc-dropdown-content-wrap') private dropdownContent = true;
   @HostBinding('class.opened') @Input() opened: boolean = false;
   @HostBinding('class.tc-dropdown-content-outside') @Input() appendToBody: boolean;
   @HostBinding('class') get additionalClasses(): string {
-    return `tc-dropdown-content-${this.align} ${this.panelClass || ''}`;
+    return `tc-dropdown-content-${this.align} tc-dropdown-content-${this.position} ${this.panelClass || ''}`;
   }
-  @HostBinding('style.--tc-dropdown-position-start.px') private positionStart: number;
-  @HostBinding('style.--tc-dropdown-top.px') private positionTop: number;
-  @HostBinding('style.--tc-dropdown-trigger-width.px') @Input() triggerWidth: number;
   @HostBinding('style.--tc-dropdown-width.px') @Input() width: number;
   @HostBinding('style.--tc-dropdown-max-height.px') @Input() maxHeight: number;
   @HostBinding('style.--tc-dropdown-bg') @Input() bg: string;
   @Input() panelClass: string;
   @Input() align: Align;
+  @Input() position: Position;
   @Input() overlay: boolean;
   @Input() animation: string;
   @Output() closeDropdown: EventEmitter<void> = new EventEmitter<void>();
-  direction: 'ltr' | 'rtl' = 'ltr';
+  readonly direction: 'ltr' | 'rtl' = 'ltr';
+
+  positionStart$: Observable<number>;
+  positionAbove$: Observable<number>;
+  positionBelow$: Observable<number>;
+  private windowScroll$ = fromEvent(window, 'scroll').pipe(
+    map(() => window.scrollY),
+    startWith(0), distinctUntilChanged(), shareReplay(1)
+  );
+  triggerParams$: Observable<DOMRect>;
 
   // animation type
   @HostBinding('class.fadeInUp-animation') get fadeInUp () {
@@ -61,12 +78,6 @@ export class DropdownContentComponent implements OnInit {
       this.hide();
     }
   }
-  // close on resize
-  @HostListener('window:resize', ['$event']) onResize() {
-    if (this.opened) {
-      this.hide();
-    }
-  }
 
   constructor(
     private element: ElementRef,
@@ -75,7 +86,10 @@ export class DropdownContentComponent implements OnInit {
     this.direction = this.document.dir && this.document.dir === 'rtl' ? 'rtl' : 'ltr';
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.setYPosition();
+    this.setStartPosition();
+  }
 
   // show dropdown content
   show() {
@@ -93,14 +107,25 @@ export class DropdownContentComponent implements OnInit {
     this.document.body.appendChild(this.element.nativeElement);
   }
 
-  // set dropdown content parameters
-  setParameters(params: DOMRect) {
-    if (this.direction === 'rtl') {
-      this.positionStart = this.document.body.offsetWidth - params.left - this.triggerWidth;
-    } else {
-      this.positionStart = params.left;
-    }
+  // set start position
+  private setStartPosition() {
+    this.positionStart$ = combineLatest([this.triggerParams$]).pipe(
+      map(([params]) => this.direction === 'rtl'
+        ?  this.document.body.offsetWidth - params.left - params.width
+        : params.left
+      ),
+      map((positionLeft) => this.appendToBody ? positionLeft : 0)
+    );
+  }
 
-    this.positionTop = params.top + params.height;
+  // set Y position
+  private setYPosition() {
+    this.positionBelow$ = combineLatest([this.triggerParams$, this.windowScroll$]).pipe(
+      map(([params, scroll]) => params.height + (this.appendToBody ? params.top - scroll : 0))
+    );
+
+    this.positionAbove$ = combineLatest([this.triggerParams$, this.windowScroll$]).pipe(
+      map(([params, scroll]) => !this.appendToBody ? params.height : (window.innerHeight - params.top + scroll))
+    );
   }
 }
