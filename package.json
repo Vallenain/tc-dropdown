@@ -1,19 +1,19 @@
 {
   "name": "@ngx-tc/dropdown",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "type0code",
   "license": "MIT",
   "description": "Angular custom dropdown library that empowers developers to easily and quickly create fully customizable dropdown menus.",
-  "keywords": ["angular", "angular UI", "angular components", "ng", "ngx", "angular custom dropdown", "angular dropdown", "dropdown"],
+  "keywords": ["angular", "angular UI", "angular components", "ng", "ngx", "angular custom dropdown", "angular dropdown", "dropdown", "ng-dropdown", "ngx-tc"],
   "repository": "https://github.com/ngx-tc/dropdown",
   "homepage": "http://tc-library.type-code.pro/#/components/dropdowns",
   "config": {
     "access": "public"
   },
   "peerDependencies": {
-    "@angular/common": "^15.1.5",
-    "@angular/core": "^15.1.5",
-    "@ngx-tc/base": "^1.0.1"
+    "@angular/common": "^16.1.2",
+    "@angular/core": "^16.1.2",
+    "@ngx-tc/base": "^1.2.0"
   },
   "dependencies": {
     "tslib": "^2.5.0"

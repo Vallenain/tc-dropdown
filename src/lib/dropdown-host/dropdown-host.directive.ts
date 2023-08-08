@@ -4,7 +4,8 @@ import { Directive, TemplateRef, ViewContainerRef } from '@angular/core';
   selector: '[tc-dropdown-host]'
 })
 export class DropdownHostDirective {
-
-  constructor(public viewContainerRef: ViewContainerRef, public templateRef: TemplateRef<unknown>) { }
-
+  constructor(
+    public viewContainerRef: ViewContainerRef,
+    public templateRef: TemplateRef<unknown>
+  ) { }
 }

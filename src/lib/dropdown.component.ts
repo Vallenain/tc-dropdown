@@ -1,11 +1,17 @@
 import {
   Component,
   ContentChild,
+  EventEmitter,
   HostBinding,
+  Inject,
   Input,
+  OnDestroy,
   OnInit,
+  Output,
   ViewChild
 } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Observable } from 'rxjs';
 
 import { Align, align } from '@ngx-tc/base';
 
@@ -13,15 +19,21 @@ import { DropdownTriggerDirective } from './dropdown-trigger/dropdown-trigger.di
 import { DropdownContentComponent } from './dropdown-content/dropdown-content.component';
 import { DropdownHostDirective } from './dropdown-host/dropdown-host.directive';
 
+export type Position = 'below' | 'above';
+export enum position {
+  below = 'below',
+  above = 'above'
+}
+
 @Component({
   selector: 'tc-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss']
 })
-export class DropdownComponent implements OnInit {
-  @HostBinding('class.opened') @Input() opened: boolean = false;
-  @ContentChild(DropdownTriggerDirective, { static: true }) dropdownButton: DropdownTriggerDirective;
-  @ViewChild(DropdownHostDirective, { static: true }) dropdownHost!: DropdownHostDirective;
+export class DropdownComponent implements OnInit, OnDestroy {
+  @HostBinding('class.opened') private opened: boolean = false;
+  @ContentChild(DropdownTriggerDirective, { static: true }) private dropdownButton: DropdownTriggerDirective;
+  @ViewChild(DropdownHostDirective, { static: true }) private dropdownHost!: DropdownHostDirective;
   @Input() overlay: boolean = true;
   @Input() appendToBody: boolean = false;
   @Input() animation: string;
@@ -30,29 +42,33 @@ export class DropdownComponent implements OnInit {
   @Input() bg: string;
   @Input() panelClass: string;
   @Input() align: Align = align.start;
-  delay: number = 0;
+  @Input() position: Position = position.below;
+  @Output() closed: EventEmitter<void> = new EventEmitter<void>;
+  private delay: number = 0;
 
-  constructor() {}
+  constructor(@Inject(DOCUMENT) private document: Document) { }
 
   ngOnInit() {
     if (this.dropdownButton) {
-      this.dropdownButton.toggle.subscribe((state: boolean) => {
-        this.toggleDropdown(state);
+      this.dropdownButton.toggle.subscribe(([state, params$]) => {
+        this.toggleDropdown(state, params$);
       });
     }
   }
 
-  toggleDropdown(state: boolean) {
-    if (this.opened) {
-      this.removeDynamicComponent();
-    } else {
-      this.createDynamicComponent();
-    }
-
-    this.opened = state;
+  ngOnDestroy() {
+    this.removeDynamicComponent();
   }
 
-  createDynamicComponent() {
+  private toggleDropdown(state: boolean, params$?: Observable<DOMRect>) {
+    if (state) {
+      this.createDynamicComponent(params$);
+    } else {
+      this.removeDynamicComponent();
+    }
+  }
+
+  private createDynamicComponent(params$: Observable<DOMRect>) {
     const contentView = this.dropdownHost.templateRef.createEmbeddedView(null);
     contentView.detectChanges();
 
@@ -65,45 +81,48 @@ export class DropdownComponent implements OnInit {
       { projectableNodes: [contentView.rootNodes] }
     );
 
-    this.setComponentProperties(componentRef.instance);
+    this.setComponentProperties(componentRef.instance, params$);
+    this.document.body.classList.add('opened-tc-dropdown');
+    this.opened = true;
   }
 
-  removeDynamicComponent() {
+  private removeDynamicComponent() {
     const viewContainerRef = this.dropdownHost.viewContainerRef;
 
+    this.closed.emit();
+    this.document.body.classList.remove('opened-tc-dropdown');
+    this.opened = false;
     setTimeout(() => {
       viewContainerRef.clear();
     }, 300);
   }
 
-  setComponentProperties(component: DropdownContentComponent) {
-    const triggerParams: DOMRect = this.dropdownButton.getTriggerParams();
-
+  private setComponentProperties(component: DropdownContentComponent, params$: Observable<DOMRect>) {
     component.overlay = this.overlay;
     component.appendToBody = this.appendToBody;
     component.animation = this.animation;
     component.width = this.width;
-    component.triggerWidth = triggerParams.width;
     component.maxHeight = this.maxHeight;
     component.bg = this.bg;
     component.panelClass = this.panelClass;
     component.align = this.align;
+    component.position = this.position;
+    component.triggerParams$ = params$;
 
     // append dropdown content to the body
     if (this.appendToBody) {
       this.delay = 100;
 
       component.appendComponentToBody();
-      component.setParameters(triggerParams);
     }
 
     setTimeout(() => {
-      component.opened = true;
+      component.show();
     }, this.delay);
 
     component.closeDropdown.subscribe(() => {
       this.toggleDropdown(false);
-      this.dropdownButton.active = false;
+      this.dropdownButton.close();
     });
   }
 }
