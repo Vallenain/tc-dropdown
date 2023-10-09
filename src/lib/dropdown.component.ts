@@ -92,9 +92,10 @@ export class DropdownComponent implements OnInit, OnDestroy {
     this.closed.emit();
     this.document.body.classList.remove('opened-tc-dropdown');
     this.opened = false;
-    setTimeout(() => {
+    /*setTimeout(() => {
       viewContainerRef.clear();
-    }, 300);
+    }, 300);*/
+    viewContainerRef.clear();
   }
 
   private setComponentProperties(component: DropdownContentComponent, params$: Observable<DOMRect>) {
